@@ -72,10 +72,10 @@
 				</configuration>
 				<executions>
 					<execution>
-					<phase>validate</phase>
-					<goals>
-						<goal>${plugin.prettier.goal}</goal>
-					</goals>
+						<phase>validate</phase>
+						<goals>
+							<goal>${plugin.prettier.goal}</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
