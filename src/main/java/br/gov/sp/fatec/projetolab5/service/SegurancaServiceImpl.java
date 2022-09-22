@@ -17,9 +17,9 @@ public class SegurancaServiceImpl implements SegurancaService {
   public Usuario novoUsuario(Usuario usuario) {
     if (
       usuario.getNome() == null ||
-      usuario.getNome().isEmpty() ||
+      usuario.getNome().trim().isEmpty() ||
       usuario.getSenha() == null ||
-      usuario.getSenha().isEmpty()
+      usuario.getSenha().trim().isEmpty()
     ) {
       throw new IllegalArgumentException("Parâmetros inválidos.");
     }
