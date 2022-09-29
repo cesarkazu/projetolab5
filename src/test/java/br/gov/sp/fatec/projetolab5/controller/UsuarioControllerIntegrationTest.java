@@ -1,5 +1,6 @@
 package br.gov.sp.fatec.projetolab5.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -35,5 +36,18 @@ public class UsuarioControllerIntegrationTest {
       .andDo(print())
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.id").exists());
+  }
+
+  @Test
+  public void buscarPeloIdTestOk() throws Exception {
+    mvc
+      .perform(
+        get("/usuario/1")
+          .contentType(MediaType.APPLICATION_JSON)
+          .accept(MediaType.APPLICATION_JSON)
+      )
+      .andDo(print())
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.nome").exists());
   }
 }
