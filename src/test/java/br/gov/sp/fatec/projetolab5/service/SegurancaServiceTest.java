@@ -7,7 +7,8 @@ import static org.mockito.ArgumentMatchers.any;
 
 import br.gov.sp.fatec.projetolab5.entity.Usuario;
 import br.gov.sp.fatec.projetolab5.repository.UsuarioRepository;
-import java.util.Arrays;
+import java.util.ArrayList;
+//import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +36,9 @@ public class SegurancaServiceTest {
     Optional<Usuario> usuarioOp = Optional.of(usuario);
     Mockito.when(usuarioRepo.findById(any())).thenReturn(usuarioOp);
     Mockito.when(usuarioRepo.save(any())).thenReturn(usuario);
-    List<Usuario> usuarios = Arrays.asList(usuario);
+    //List<Usuario> usuarios = Arrays.asList(usuario);
+    List<Usuario> usuarios = new ArrayList<Usuario>();
+    usuarios.add(usuario);
     Mockito.when(usuarioRepo.findAll()).thenReturn(usuarios);
   }
 

@@ -42,12 +42,12 @@ public class UsuarioControllerIntegrationTest {
   public void buscarPeloIdTestOk() throws Exception {
     mvc
       .perform(
-        get("/usuario/1")
+        get("/usuario/{1}", 1L)
           .contentType(MediaType.APPLICATION_JSON)
           .accept(MediaType.APPLICATION_JSON)
       )
       .andDo(print())
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.nome").exists());
+      .andExpect(jsonPath("$.nome").value("admin"));
   }
 }

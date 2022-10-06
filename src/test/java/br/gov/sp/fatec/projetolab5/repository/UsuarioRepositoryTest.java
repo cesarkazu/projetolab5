@@ -53,22 +53,4 @@ public class UsuarioRepositoryTest {
       }
     );
   }
-
-  @Test
-  public void novoUsuarioNomeEmpty() {
-    Usuario usuario = new Usuario();
-    usuario.setNome("");
-    usuario.setSenha("123");
-    usuario = usuarioRepo.save(usuario);
-    assertNotNull(usuario.getId());
-  }
-
-  @Test
-  public void novoUsuarioSenhaEmpty() {
-    Usuario usuario = new Usuario();
-    usuario.setNome("Teste");
-    usuario.setSenha("");
-    usuario = usuarioRepo.save(usuario);
-    assertNotNull(usuario.getId());
-  }
 }
