@@ -1,7 +1,13 @@
-# projetolabv
+# Projeto da disciplina Laboratório de Desenvolvimente em Banco de Dados V
 
-mvn test
+## Para executar: 
+* mvn spring-boot:run
 
-mvn test >> log.txt
+## Para executar testes: 
+* mvn test
+* mvn test >> log.txt
 
-mvn spring-boot:run
+## Para executar testes e gerar relatório: 
+* mvn test jacoco:report
+
+Para visualizar os testes, abra no navegador o arquivo "index.html" em "/target/site/jacoco"
