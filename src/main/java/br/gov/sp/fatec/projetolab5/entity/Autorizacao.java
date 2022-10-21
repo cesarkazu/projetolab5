@@ -19,6 +19,12 @@ public class Autorizacao {
   @Column(name = "aut_nome")
   private String nome;
 
+  public Autorizacao() {}
+
+  public Autorizacao(String nome) {
+    this.nome = nome;
+  }
+
   public Long getId() {
     return id;
   }
