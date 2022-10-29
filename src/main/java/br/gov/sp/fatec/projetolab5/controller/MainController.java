@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin
 public class MainController {
-    
-    @GetMapping
-    public String hello() {
-        return "Hello!";
-    }
 
+  @GetMapping
+  public String hello() {
+    return "Hello!";
+  }
 }
