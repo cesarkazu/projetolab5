@@ -18,7 +18,7 @@ public class UsuarioRepositoryTest {
     @Autowired
     private UsuarioRepository usuarioRepo;
 
-    @Test
+    //@Test
     public void novoUsuarioTest() {
         Usuario usuario = new Usuario();
         usuario.setNome("UsuarioTeste");
