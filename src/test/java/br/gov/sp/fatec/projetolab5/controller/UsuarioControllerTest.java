@@ -8,7 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import br.gov.sp.fatec.projetolab5.entity.Usuario;
 import br.gov.sp.fatec.projetolab5.service.SegurancaService;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

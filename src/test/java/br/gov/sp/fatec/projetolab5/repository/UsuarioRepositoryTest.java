@@ -3,7 +3,7 @@ package br.gov.sp.fatec.projetolab5.repository;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import br.gov.sp.fatec.projetolab5.entity.Usuario;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
