@@ -29,33 +29,48 @@ public class AnotacaoServiceTest {
 
   @BeforeEach
   public void setUp() {
+    //mock usuario
     Usuario usuario = new Usuario();
     usuario.setId(1L);
     usuario.setNome("teste usuario");
     usuario.setSenha("senha usuario");
 
+    //mock anotação 1
     Anotacao anotacao = new Anotacao();
     anotacao.setId(1L);
     anotacao.setTexto("teste anotacao");
     anotacao.setDataHora(new Date());
     anotacao.setUsuario(usuario);
 
-    List<Anotacao> anotacoes = new ArrayList<Anotacao>();
-    anotacoes.add(anotacao);
+    //mock anotação 2
+    Anotacao anotacao2 = new Anotacao();
+    anotacao2.setId(2L);
+    anotacao2.setTexto("asd");
+    anotacao2.setDataHora(new Date());
+    anotacao2.setUsuario(usuario);
 
-    Mockito.when(anotacaoRepo.findAll()).thenReturn(anotacoes);
-    Mockito.when(anotacaoRepo.findByTextoContains(any())).thenReturn(anotacoes);
+    //mock lista de todas anotações
+    List<Anotacao> todasAnotacoes = new ArrayList<Anotacao>();
+    todasAnotacoes.add(anotacao);
+    todasAnotacoes.add(anotacao2);
+
+    //mock lista de uma anotação
+    List<Anotacao> umaAnotacao = new ArrayList<Anotacao>();
+    umaAnotacao.add(anotacao);
+
+    Mockito.when(anotacaoRepo.findAll()).thenReturn(todasAnotacoes);
+    Mockito.when(anotacaoRepo.findByTextoContains(any())).thenReturn(umaAnotacao);
     Mockito.when(anotacaoRepo.save(any())).thenReturn(anotacao);
   }
 
   @Test
   public void buscaAnotacoesTestOkTextoNull() {
-    assertEquals(1, service.buscaAnotacoes(null).size());
+    assertEquals(2, service.buscaAnotacoes(null).size());
   }
 
   @Test
   public void buscaAnotacoesTestOkTextoVazio() {
-    assertEquals(1, service.buscaAnotacoes("").size());
+    assertEquals(2, service.buscaAnotacoes("").size());
   }
 
   @Test
@@ -75,7 +90,7 @@ public class AnotacaoServiceTest {
     anotacao.setUsuario(usuario);
 
     assertThrows(
-      IllegalArgumentException.class,
+      AnotacaoException.class,
       () -> {
         service.novaAnotacao(anotacao);
       }
@@ -94,7 +109,7 @@ public class AnotacaoServiceTest {
     anotacao.setUsuario(usuario);
 
     assertThrows(
-      IllegalArgumentException.class,
+      AnotacaoException.class,
       () -> {
         service.novaAnotacao(anotacao);
       }
@@ -110,7 +125,7 @@ public class AnotacaoServiceTest {
     anotacao.setUsuario(null);
 
     assertThrows(
-      IllegalArgumentException.class,
+      AnotacaoException.class,
       () -> {
         service.novaAnotacao(anotacao);
       }
@@ -129,7 +144,7 @@ public class AnotacaoServiceTest {
     anotacao.setUsuario(usuario);
 
     assertThrows(
-      IllegalArgumentException.class,
+      AnotacaoException.class,
       () -> {
         service.novaAnotacao(anotacao);
       }
@@ -148,7 +163,7 @@ public class AnotacaoServiceTest {
     anotacao.setUsuario(usuario);
 
     assertThrows(
-      RuntimeException.class,
+      AnotacaoException.class,
       () -> {
         service.novaAnotacao(anotacao);
       }

@@ -47,7 +47,7 @@ public class AnotacaoControllerTest {
     Mockito.when(service.buscaAnotacoes("teste")).thenReturn(anotacoes);
 
     mvc
-      .perform(get("/anotacao/teste").contentType(MediaType.APPLICATION_JSON))
+      .perform(get("/anotacao/{1}", "teste").contentType(MediaType.APPLICATION_JSON))
       .andDo(print())
       .andExpect(status().isOk())
       .andExpect(jsonPath("$[0].id").value(1L));

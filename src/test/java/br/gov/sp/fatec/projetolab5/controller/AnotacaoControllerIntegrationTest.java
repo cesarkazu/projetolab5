@@ -1,5 +1,8 @@
 package br.gov.sp.fatec.projetolab5.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -38,13 +41,16 @@ public class AnotacaoControllerIntegrationTest {
       .andExpect(jsonPath("$.id").exists());
   }
 
-  //@Test
-  public void buscarPeloIdTestOk() throws Exception {
+  @Test
+  public void novaAnotacaoTestOkTextoNulo() throws Exception {
     mvc
-      .perform(get("/usuario/{1}", 1L).accept(MediaType.APPLICATION_JSON))
+      .perform(
+        post("/anotacao")
+          .content("{\"texto\":\"anotacao mineda\", \"usuario\":{\"id\":9999}}")
+          .contentType(MediaType.APPLICATION_JSON)
+          .accept(MediaType.APPLICATION_JSON)
+      )
       .andDo(print())
-      .andExpect(status().isOk())
-      .andExpect(jsonPath("$.nome").value("admin"));
-    //.andExpect(status().is(500))
+      .andExpect(status().is(500));
   }
 }

@@ -25,13 +25,13 @@ public class AnotacaoServiceImpl implements AnotacaoService {
       anotacao.getUsuario() == null ||
       anotacao.getUsuario().getId() == null
     ) {
-      throw new IllegalArgumentException("Anotação possui atributos em branco");
+      throw new AnotacaoException("Anotação possui atributos em branco");
     }
     Usuario usuario;
     try {
       usuario = service.buscarUsuarioPorId(anotacao.getUsuario().getId());
     } catch (IllegalArgumentException exception) {
-      throw new RuntimeException("Usuário não encontrado", exception);
+      throw new AnotacaoException("Usuário não encontrado", exception);
     }
     if (anotacao.getDataHora() == null) {
       anotacao.setDataHora(new Date());
